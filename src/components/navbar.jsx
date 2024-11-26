@@ -1,7 +1,7 @@
 import { currentUserState } from '@/states/currentUserState';
 import Link from 'next/link';
 import React from 'react'
-import { PiBellBold, PiBellFill, PiCameraPlusBold, PiCameraPlusFill, PiHouseBold, PiHouseFill, PiMagnifyingGlassBold, PiMagnifyingGlassFill, PiUserBold, PiUserFill } from "react-icons/pi";
+import { PiBellBold, PiBellFill, PiBowlFoodBold, PiBowlFoodFill, PiCameraPlusBold, PiCameraPlusFill, PiGearBold, PiGearFill, PiHouseBold, PiHouseFill, PiMagnifyingGlassBold, PiMagnifyingGlassFill, PiNoteBold, PiNoteFill, PiNotePencilBold, PiNotePencilFill, PiUserBold, PiUserFill } from "react-icons/pi";
 import { useRecoilValue } from 'recoil';
 
 function NavBar({ active }) {
@@ -19,30 +19,30 @@ function NavBar({ active }) {
                 </Link>
                 <Link href="/record" className="text-black">
                     {active == 'record' ? (
-                        <PiMagnifyingGlassFill size={24} />
+                        <PiNotePencilFill size={24} />
                     ) : (
-                        <PiMagnifyingGlassBold size={24} />
+                        <PiNotePencilBold size={24} />
                     )}
                 </Link>
-                <Link href="https://www.akashi.ac.jp/news/2024/biub2r00000005os-att/menyu.pdf" className="text-black" target="_blank" rel="noopener noreferrer" className="text-black">
+                <Link href="https://www.akashi.ac.jp/news/2024/biub2r00000005os-att/menyu.pdf" target="_blank" rel="noopener noreferrer" className="text-black">
                     {active == 'menu' ? (
-                        <PiBellFill size={24} />
+                        <PiBowlFoodFill size={24} />
                     ) : (
-                        <PiBellBold size={24} />
+                        <PiBowlFoodBold size={24} />
                     )}
                 </Link>
                 <Link href="/check" className="text-black">
                     {active == 'check' ? (
-                        <PiCameraPlusFill size={24} />
+                        <PiNoteFill size={24} />
                     ) : (
-                        <PiCameraPlusBold size={24} />
+                        <PiNoteBold size={24} />
                     )}
                 </Link>
                 <Link href="#" className="text-black">
                     {active == 'setting' ? (
-                        <PiCameraPlusFill size={24} />
+                        <PiGearFill size={24} />
                     ) : (
-                        <PiCameraPlusBold size={24} />
+                        <PiGearBold size={24} />
                     )}
                 </Link>
             </div>
