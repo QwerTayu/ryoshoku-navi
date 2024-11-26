@@ -10,11 +10,18 @@ function NavBar({ active }) {
     return (
         <nav className="bg-gray-200 py-4 w-full h-[56px]">
             <div className="container mx-auto flex items-center justify-around">
-                <Link href="/home" className="text-black">
+                {/* <Link href="/home" className="text-black">
                     {active == 'home' ? (
                         <PiHouseFill size={24}/>
                     ) : (
                         <PiHouseBold size={24} />
+                    )}
+                </Link> */}
+                <Link href="/home" className="text-black">
+                    {active == 'home' ? (
+                        <PiNoteFill size={24} />
+                    ) : (
+                        <PiNoteBold size={24} />
                     )}
                 </Link>
                 <Link href="/record" className="text-black">
@@ -31,20 +38,19 @@ function NavBar({ active }) {
                         <PiBowlFoodBold size={24} />
                     )}
                 </Link>
-                <Link href="/check" className="text-black">
-                    {active == 'check' ? (
-                        <PiNoteFill size={24} />
-                    ) : (
-                        <PiNoteBold size={24} />
-                    )}
-                </Link>
-                <Link href="#" className="text-black">
-                    {active == 'setting' ? (
-                        <PiGearFill size={24} />
-                    ) : (
+                {currentUser ? (
+                    <Link href={`/users/${currentUser.uid}`} className="text-black">
+                        {active == currentUser.uid ? (
+                            <PiGearFill size={24} />
+                        ) : (
+                            <PiGearBold size={24} />
+                        )}
+                    </Link>
+                ) : (
+                    <Link href='/users' className="text-black">
                         <PiGearBold size={24} />
-                    )}
-                </Link>
+                    </Link>
+                )}
             </div>
         </nav>
     )

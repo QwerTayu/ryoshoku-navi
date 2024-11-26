@@ -21,7 +21,7 @@ export const useFirestore = () => {
     };
 
     const showPosts = async () => {
-        const snapShot = await getDocs(collection(db, "posts"));
+        const snapShot = await getDocs(collection(db, "orders"));
         return snapShot.docs.map((doc) => ({ ...doc.data() }));
     };
 
@@ -50,61 +50,61 @@ export const useFirestore = () => {
         }));
     }
 
-    const updateLikes = async (currentUserId, postId, LikedArr, setLikedArr, isLiked, setIsLiked, likeCounts, setLikeCounts) => {
-        const postRef = doc(db, "posts", postId);
+    // const updateLikes = async (currentUserId, postId, LikedArr, setLikedArr, isLiked, setIsLiked, likeCounts, setLikeCounts) => {
+    //     const postRef = doc(db, "posts", postId);
 
-        if (isLiked) {
-            setIsLiked(false) // いいねを取り消したユーザーの状態を更新
-            setLikeCounts(likeCounts - 1) // いいね数を更新
-            setLikedArr(LikedArr.filter((liked) => liked !== currentUserId))
-            await updateDoc(postRef, {
-                liked: LikedArr.filter((liked) => liked !== currentUserId),
-            }) // 投稿のいいねを取り消したユーザーを削除
-        } else {
-            setIsLiked(true) // いいねしたユーザーの状態を更新
-            setLikeCounts(likeCounts + 1) // いいね数を更新
-            setLikedArr([...LikedArr, currentUserId])
-            await updateDoc(postRef, {
-                liked: [...LikedArr, currentUserId],
-            }) // 投稿にいいねしたユーザーを追加
-        }
-    }
+    //     if (isLiked) {
+    //         setIsLiked(false) // いいねを取り消したユーザーの状態を更新
+    //         setLikeCounts(likeCounts - 1) // いいね数を更新
+    //         setLikedArr(LikedArr.filter((liked) => liked !== currentUserId))
+    //         await updateDoc(postRef, {
+    //             liked: LikedArr.filter((liked) => liked !== currentUserId),
+    //         }) // 投稿のいいねを取り消したユーザーを削除
+    //     } else {
+    //         setIsLiked(true) // いいねしたユーザーの状態を更新
+    //         setLikeCounts(likeCounts + 1) // いいね数を更新
+    //         setLikedArr([...LikedArr, currentUserId])
+    //         await updateDoc(postRef, {
+    //             liked: [...LikedArr, currentUserId],
+    //         }) // 投稿にいいねしたユーザーを追加
+    //     }
+    // }
 
-    const addFollowing = async (userId, followingId) => {
-        const followingRef = doc(db, "users", userId, "following", followingId);
-        const followerRef = doc(db, "users", followingId, "follower", userId);
-        try {
-            await setDoc(followingRef, {
-                userId: followingId,
-            });
-            await setDoc(followerRef, {
-                userId: userId,
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    // const addFollowing = async (userId, followingId) => {
+    //     const followingRef = doc(db, "users", userId, "following", followingId);
+    //     const followerRef = doc(db, "users", followingId, "follower", userId);
+    //     try {
+    //         await setDoc(followingRef, {
+    //             userId: followingId,
+    //         });
+    //         await setDoc(followerRef, {
+    //             userId: userId,
+    //         });
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
-    const removeFollowing = async (userId, followingId) => {
-        const followingRef = doc(db, "users", userId, "following", followingId);
-        const followerRef = doc(db, "users", followingId, "follower", userId);
-        try {
-            await deleteDoc(followingRef);
-            await deleteDoc(followerRef);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    // const removeFollowing = async (userId, followingId) => {
+    //     const followingRef = doc(db, "users", userId, "following", followingId);
+    //     const followerRef = doc(db, "users", followingId, "follower", userId);
+    //     try {
+    //         await deleteDoc(followingRef);
+    //         await deleteDoc(followerRef);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
-    const getFollowing = async (userId) => {
-        const snapShot = await getDocs(collection(db, "users", userId, "following"));
-        return snapShot.docs.map((doc) => ({ ...doc.data() }));
-    }
+    // const getFollowing = async (userId) => {
+    //     const snapShot = await getDocs(collection(db, "users", userId, "following"));
+    //     return snapShot.docs.map((doc) => ({ ...doc.data() }));
+    // }
 
-    const getFollower = async (userId) => {
-        const snapShot = await getDocs(collection(db, "users", userId, "follower"));
-        return snapShot.docs.map((doc) => ({ ...doc.data() }));
-    }
+    // const getFollower = async (userId) => {
+    //     const snapShot = await getDocs(collection(db, "users", userId, "follower"));
+    //     return snapShot.docs.map((doc) => ({ ...doc.data() }));
+    // }
 
-    return { createPost, showPosts, getProfileUserById, getProfileUserByName, getAllUsers, updateLikes, addFollowing, removeFollowing, getFollowing, getFollower };
+    return { createPost, showPosts, getProfileUserById, getProfileUserByName, getAllUsers };
 };
