@@ -49,9 +49,9 @@ function record() {
 
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [orders, setOrders] = useState([ // 初期化
-    { date: format(selectedDate, 'yyyy-MM-dd'), day: format(selectedDate, 'E'), morning: false, lunch: false, dinner: false },
-    { date: format(addDays(selectedDate, 1), 'yyyy-MM-dd'), day: format(addDays(selectedDate, 1), 'E'), morning: false, lunch: false, dinner: false },
-    { date: format(addDays(selectedDate, 2), 'yyyy-MM-dd'), day: format(addDays(selectedDate, 2), 'E'), morning: false, lunch: false, dinner: false },
+    { date: selectedDate, day: selectedDate, morning: false, lunch: false, dinner: false },
+    { date: addDays(selectedDate, 1), day: addDays(selectedDate, 1), morning: false, lunch: false, dinner: false },
+    { date: addDays(selectedDate, 2), day: addDays(selectedDate, 2), morning: false, lunch: false, dinner: false },
   ]);
 
   const toggleOrder = (index, meal) => {
@@ -64,9 +64,9 @@ function record() {
     const newDate = new Date(event.target.value);
     setSelectedDate(newDate);
     setOrders([ // 初期化
-      { date: format(newDate, 'yyyy-MM-dd'), day: format(newDate, 'E'), morning: false, lunch: false, dinner: false },
-      { date: format(addDays(newDate, 1), 'yyyy-MM-dd'), day: format(addDays(newDate, 1), 'E'), morning: false, lunch: false, dinner: false },
-      { date: format(addDays(newDate, 2), 'yyyy-MM-dd'), day: format(addDays(newDate, 2), 'E'), morning: false, lunch: false, dinner: false },
+      { date: newDate, day: newDate, morning: false, lunch: false, dinner: false },
+      { date: addDays(selectedDate, 1), day: addDays(selectedDate, 1), morning: false, lunch: false, dinner: false },
+      { date: addDays(selectedDate, 2), day: addDays(selectedDate, 2), morning: false, lunch: false, dinner: false },
     ]);
   };
 
@@ -102,8 +102,8 @@ function record() {
             <tbody>
               {orders.map((order, index) => (
                 <tr key={index}>
-                  <td className="px-4 py-2 border">{order.date}</td>
-                  <td className="px-4 py-2 border">{order.day}</td>
+                  <td className="px-4 py-2 border">{format(order.date, 'yyyy-MM-dd')}</td>
+                  <td className="px-4 py-2 border">{format(order.day, 'E')}</td>
                   <td className="px-4 py-2 border">
                     <input
                       type="checkbox"
