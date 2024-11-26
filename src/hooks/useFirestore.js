@@ -2,19 +2,18 @@ import { db } from "@/lib/firebase";
 import { FieldValue, doc, serverTimestamp, setDoc, getDocs, collection, deleteDoc, getDoc, updateDoc } from "firebase/firestore";
 
 export const useFirestore = () => {
-    const createPost = async (username, postId, userId, pBody, pImageURL, isPrivate) => {
-        const pRef = doc(db, "posts", postId)
+    const createPost = async (username, postId, userId, date, morning, lunch, dinner) => {
+        const pRef = doc(db, "orders", postId)
         try {
             await setDoc(pRef, {
-                postId: postId,
-                body: pBody,
                 username: username,
+                postId: postId,
                 userId: userId,
                 createdAt: serverTimestamp(FieldValue),
-                imageURL: pImageURL,
-                like_cnt: 0,
-                day_cnt: 0,
-                isPrivate: isPrivate,
+                date: date,
+                morning: morning,
+                lunch: lunch,
+                dinner: dinner,
             });
         } catch (error) {
             console.log(error);
@@ -50,17 +49,6 @@ export const useFirestore = () => {
             uid: doc.id,
         }));
     }
-
-    // const getLikes = async (setIsLiked, setLikeCounts, currentUserId, postId) => {
-    //     const snapShot = await getDocs(collection(db, "posts", postId, "liked"));
-    //     const posts = snapShot.docs.map((doc) => ({ ...doc.data() }));
-
-    //     const filteredPost = posts.filter((post) => post.userId === currentUserId);
-    //     const isLikedData = filteredPost.length > 0 ? true : false;
-    //     setIsLiked(isLikedData)
-
-    //     setLikeCounts(posts.length)
-    // }
 
     const updateLikes = async (currentUserId, postId, LikedArr, setLikedArr, isLiked, setIsLiked, likeCounts, setLikeCounts) => {
         const postRef = doc(db, "posts", postId);

@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth/firebase-adapter": "^1.0.0",
     "autoprefixer": "10.4.16",
+    "date-fns": "^4.1.0",
     "firebase": "^10.4.0",
     "firebase-admin": "^11.11.0",
     "next": "13.5.3",
