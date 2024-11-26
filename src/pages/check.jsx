@@ -8,7 +8,7 @@ import { PiArrowLeftBold, PiPaperPlaneTiltBold } from "react-icons/pi";
 import { useRecoilValue } from "recoil";
 import { format, addDays } from 'date-fns';
 
-function create() {
+function check() {
   const { createPost } = useFirestore();
   const [postId, setPostId] = useState("");
   const [userId, setUserId] = useState("");
@@ -71,7 +71,7 @@ function create() {
   };
 
   return (
-    <MainContainer active="create">
+    <MainContainer active="check">
       <div className="flex justify-between">
         <button type="button" onClick={() => reversePost()} className="p-2">
           <PiArrowLeftBold size={24} />
@@ -140,4 +140,4 @@ function create() {
   );
 }
 
-export default create;
+export default check;

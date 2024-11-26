@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
 
-export default function Search() {
+export default function Menu() {
     const { getProfileUserById, getProfileUserByName } = useFirestore();
     const [input, setInput] = useState('');
     const [profileUser, setProfileUser] = useState(null);
@@ -21,7 +21,7 @@ export default function Search() {
     }
 
     return (
-        <MainContainer active='search'>
+        <MainContainer active='menu'>
             <div>
                 <h1 className='pl-5 pb-5 text-2xl font-bold'>ユーザー検索</h1>
                 <div className='flex items-center justify-center w-full px-3'>

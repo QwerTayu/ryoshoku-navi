@@ -17,40 +17,34 @@ function NavBar({ active }) {
                         <PiHouseBold size={24} />
                     )}
                 </Link>
-                <Link href="/search" className="text-black">
-                    {active == 'search' ? (
+                <Link href="/record" className="text-black">
+                    {active == 'record' ? (
                         <PiMagnifyingGlassFill size={24} />
                     ) : (
                         <PiMagnifyingGlassBold size={24} />
                     )}
                 </Link>
-                <Link href="/create" className="text-black">
-                    {active == 'create' ? (
-                        <PiCameraPlusFill size={24} />
-                    ) : (
-                        <PiCameraPlusBold size={24} />
-                    )}
-                </Link>
-                <Link href="/notification" className="text-black">
-                    {active == 'notification' ? (
+                <Link href="https://www.akashi.ac.jp/news/2024/biub2r00000005os-att/menyu.pdf" className="text-black" target="_blank" rel="noopener noreferrer" className="text-black">
+                    {active == 'menu' ? (
                         <PiBellFill size={24} />
                     ) : (
                         <PiBellBold size={24} />
                     )}
                 </Link>
-                {currentUser ? (
-                    <Link href={`/users/${currentUser.uid}`} className="text-black">
-                        {active == currentUser.uid ? (
-                            <PiUserFill size={24} />
-                        ) : (
-                            <PiUserBold size={24} />
-                        )}
-                    </Link>
-                ) : (
-                    <Link href='/users' className="text-black">
-                        <PiUserBold size={24} />
-                    </Link>
-                )}
+                <Link href="/check" className="text-black">
+                    {active == 'check' ? (
+                        <PiCameraPlusFill size={24} />
+                    ) : (
+                        <PiCameraPlusBold size={24} />
+                    )}
+                </Link>
+                <Link href="#" className="text-black">
+                    {active == 'setting' ? (
+                        <PiCameraPlusFill size={24} />
+                    ) : (
+                        <PiCameraPlusBold size={24} />
+                    )}
+                </Link>
             </div>
         </nav>
     )
