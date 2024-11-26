@@ -12,14 +12,15 @@ export default function Home() {
       <div className="w-full max-w-5xl px-5 mx-auto flex flex-col md:flex-row items-center justify-center gap-[30px] md:justify-between">
         <div className="w-full md:w-max max-w-[400px] flex-col justify-center items-start gap-[30px] md:gap-[50px] inline-flex">
           <div className="text-white text-[32px] md:text-[40px] font-bold leading-normal">
-            Heyaをシェアする。<br />
-            汚部屋の現状確認して<br />
-            一緒に掃除する。
+            寮生の<br />
+            寮生による<br />
+            寮生のためのアプリ
           </div>
           <div className="self-stretch text-white text-base font-normal leading-normal">
-            お部屋の掃除をしたいけど、なかなか始められない。
-            でも友達が遊びに来るときは掃除を始められる。
-            色んなことを共有したいZ世代向けに、この現象を使ったお掃除をサポートするSNSアプリができました！
+            💁‍♂️ 締切17:00を忘れてしまうよ...<br />
+            💁‍♀️ 今日欠食してたっけかな...<br />
+            🙋‍♀️ あっ!今日人気メニューの日だった！<br />
+            そんな寮生のためのアプリができました。
           </div>
         </div>
         <div className="w-full max-w-[380px] md:w-[450px] px-[30px] md:px-[50px] py-[50px] md:py-[100px] bg-white bg-opacity-30 rounded-[40px] flex-col justify-center items-center gap-[30px] inline-flex">
@@ -30,13 +31,6 @@ export default function Home() {
                 onClick={() => signIn('google')}
               >
                 Googleでログイン
-              </button>
-            </div>
-            <div className="px-10 py-2.5 bg-cyan-600 rounded-full flex justify-center items-center">
-              <button className="text-white text-base font-normal leading-normal"
-                onClick={() => signIn('twitter')}
-              >
-                Twitterでログイン
               </button>
             </div>
           </div>
